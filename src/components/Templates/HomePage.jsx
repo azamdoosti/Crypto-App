@@ -13,6 +13,7 @@ const HomePage = () => {
     useEffect(() => {
         setIsLoading(true)
         const getData = async () => {
+           try{
             const res = await fetch(getCoinList(page , currency))
             const json = await res.json()
             // console.log("Api REsponse :", json)
@@ -20,6 +21,9 @@ const HomePage = () => {
             setIsLoading(false)
             // console.log("Type of coins:", typeof coins);
             // console.log("Is Array?", Array.isArray(coins));
+           } catch(error){
+            console.log(error)
+           }
         }
         getData();
     }, [page , currency])
