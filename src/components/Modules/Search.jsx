@@ -12,12 +12,16 @@ function Search({ currency, setCurrency }) {
     useEffect(() => {
         const controller = new AbortController()
         setCoins([])
-        if (!text) return;
+        if (!text) {
+            setIsLoading(false)
+            return;
+        }
         const search = async () => {
             try {
                 const res = await fetch(searchCoin(text), { signal: controller.signal })
                 const json = await res.json()
                 console.log(json)
+                setIsLoading(false)
                 if (json.coins) { setCoins(json.coins) } else { alert(error.message) }
             }
             catch (error) {
@@ -25,6 +29,7 @@ function Search({ currency, setCurrency }) {
                     alert("No coins found!")
             }
         }
+        setIsLoading(true)
         search()
         return () => controller.abort()
     }, [text])
