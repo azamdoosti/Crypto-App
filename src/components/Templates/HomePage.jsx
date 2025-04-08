@@ -37,7 +37,7 @@ const HomePage = () => {
             <Search currency={currency} setCurrency={setCurrency} />
             <TableCoin coins={coins} isLoading={isLoading} setChart={setChart}/>
             <Pagination page={page} setPage={setPage} />
-            {!!chart &&   <Chart chart={chart}  setChart={setChar}/>}
+            {!!chart &&   <Chart chart={chart}  setChart={setChart}/>}
         </div>
     )
 }
