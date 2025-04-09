@@ -1,12 +1,13 @@
 import HomePage from "./components/Templates/HomePage"
+import Layout from "./layout/Layout"
 
 function App() {
 
 
   return (
-    <>
-      <HomePage />
-    </>
+    <Layout>
+            <HomePage />
+    </Layout>
   )
 }
 
